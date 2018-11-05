@@ -2,6 +2,8 @@
 
 An implementation of Ed25519 by SUPERCOP ref10.
 
+[![Build Status][travis ci badge]][travis ci][![License][license badge]](LICENSE)[![Package Version][npm package version badge]][npm package]
+
 ## Table of Contents
 
 - [@epicinium/clavem](#epiciniumclavem)
@@ -11,6 +13,9 @@ An implementation of Ed25519 by SUPERCOP ref10.
         - [generateKeyPair([seed])](#generatekeypairseed)
         - [sign(message, publicKey, privateKey)](#signmessage-publickey-privatekey)
         - [verify(message, signature, publicKey)](#verifymessage-signature-publickey)
+    - [Contributing](#contributing)
+        - [Requisites](#requisites)
+    - [Trivia](#trivia)
     - [License](#license)
 
 ## Installation
@@ -79,6 +84,23 @@ if (isVerified) {
 }
 ```
 
+## Contributing
+
+### Requisites
+
+-   [Node.js](https://nodejs.org/) LTS Dubnium v10.13.0+
+-   [emscripten](https://kripken.github.io/emscripten-site/) v1.38.15+
+
+## Trivia
+
+**clavem** means **key** in the Latin Language
+
 ## License
 
 [MIT Licensed](LICENSE).
+
+[travis ci badge]: https://img.shields.io/travis/com/epicinium/clavem/develop.svg?style=flat-square
+[travis ci]: https://travis-ci.com/epicinium/clavem
+[license badge]: https://img.shields.io/github/license/epicinium/clavem.svg?style=flat-square
+[npm package version badge]: https://img.shields.io/npm/v/@epicinium/clavem.svg?style=flat-square
+[npm package]: https://www.npmjs.com/package/@epicinium/clavem
