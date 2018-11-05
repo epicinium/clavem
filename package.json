@@ -22,11 +22,21 @@
         "url": "git+https://github.com/epicinium/clavem.git"
     },
     "scripts": {
+        "build": "if [ \"$NODE_ENV\" = \"production\" ]; then npm run build:prod; else npm run build:dev; fi",
+        "build:dev": "NODE_ENV=development npm run compile",
+        "build:prod": "NODE_ENV=production npm run compile",
+        "compile": "npm run compile:babel",
+        "compile:babel": "npx babel sources --out-dir releases --delete-dir-on-start",
         "test": "npm run test:eslint",
         "test:eslint": "npx eslint ."
     },
     "dependencies": {},
     "devDependencies": {
+        "@babel/cli": "^7.1.2",
+        "@babel/core": "^7.1.2",
+        "@babel/plugin-transform-async-to-generator": "^7.1.0",
+        "@babel/plugin-transform-runtime": "^7.1.0",
+        "@babel/preset-env": "^7.1.0",
         "babel-eslint": "^10.0.1",
         "eslint": "^5.8.0",
         "eslint-config-airbnb-base": "^13.1.0",
