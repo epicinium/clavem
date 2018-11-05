@@ -27,6 +27,9 @@
         "build:prod": "NODE_ENV=production npm run compile",
         "compile": "npm run compile:babel",
         "compile:babel": "npx babel sources --out-dir releases --delete-dir-on-start",
+        "postcompile": "if [ \"$NODE_ENV\" = \"production\" ]; then npm run minify:prod; else npm run minify:dev; fi",
+        "minify:dev": "find releases -iname \"*.js\" -exec sh -c \"npx terser --toplevel --compress --beautify --output {} -- {}\" \\;",
+        "minify:prod": "find releases -iname \"*.js\" -exec sh -c \"npx terser --toplevel --compress passes=2 --mangle --output {} -- {}\" \\;",
         "test": "npm run test:eslint",
         "test:eslint": "npx eslint ."
     },
@@ -40,7 +43,8 @@
         "babel-eslint": "^10.0.1",
         "eslint": "^5.8.0",
         "eslint-config-airbnb-base": "^13.1.0",
-        "eslint-plugin-import": "^2.14.0"
+        "eslint-plugin-import": "^2.14.0",
+        "terser": "^3.10.11"
     },
     "engines": {
         "node": "^10.13.0",
