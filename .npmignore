@@ -1,0 +1,11 @@
+# Unnecessary files
+.*
+
+# Configuration files for development
+babel.config.js
+
+# Source contents
+sources
+
+# Test codes
+tests
