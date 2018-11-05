@@ -22,18 +22,10 @@
         "url": "git+https://github.com/epicinium/clavem.git"
     },
     "scripts": {
-        "build": "if [ \"$NODE_ENV\" = \"production\" ]; then npm run build:prod; else npm run build:dev; fi",
-        "build:dev": "NODE_ENV=development npm run compile",
-        "build:prod": "NODE_ENV=production npm run compile",
-        "compile": "npm run compile:babel && npm run compile:emscripten",
-        "compile:babel": "npx babel sources --out-dir releases --delete-dir-on-start",
-        "compile:emscripten": "emcc -Os sources/ed25519.c -o releases/binary.js -s EXPORTED_FUNCTIONS='[\"_malloc\", \"_free\"]' -std=gnu11",
-        "postcompile": "if [ \"$NODE_ENV\" = \"production\" ]; then npm run minify:prod; else npm run minify:dev; fi",
-        "minify:dev": "find releases -iname \"*.js\" -exec sh -c \"npx terser --toplevel --compress --beautify --output {} -- {}\" \\;",
-        "minify:prod": "find releases -iname \"*.js\" -exec sh -c \"npx terser --toplevel --compress passes=2 --mangle --output {} -- {}\" \\;",
+        "build": "sh scripts/build",
         "test": "npm run test:eslint && npm run test:mocha",
         "test:eslint": "npx eslint .",
-        "test:mocha": "npx mocha tests --reporter list"
+        "test:mocha": "npx mocha tests"
     },
     "dependencies": {
         "@babel/runtime": "^7.1.2",
