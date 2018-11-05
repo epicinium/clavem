@@ -22,7 +22,7 @@
         "url": "git+https://github.com/epicinium/clavem.git"
     },
     "scripts": {
-        "build": "source scripts/build.sh",
+        "build": "sh scripts/build",
         "test": "npm run test:eslint && npm run test:mocha",
         "test:eslint": "npx eslint .",
         "test:mocha": "npx mocha tests"
