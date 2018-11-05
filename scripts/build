@@ -9,6 +9,10 @@ fi
 emcc -Os sources/ed25519.c -o releases/binary.js -s EXPORTED_FUNCTIONS='["_malloc", "_free"]'
 
 # Temporal.
+if [ "$TRAVIS" = true ]; then
+    sudo chown travis:travis releases/binary.js releases/binary.wasm
+fi
+
 ls -alF releases
 
 if [ "$NODE_ENV" = "production" ]; then
