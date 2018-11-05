@@ -9,3 +9,6 @@ sources
 
 # Test codes
 tests
+
+# Scripts for development
+scripts
