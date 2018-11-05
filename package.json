@@ -1,0 +1,35 @@
+{
+    "name": "@epicinium/clavem",
+    "version": "1.0.0-rc.0",
+    "description": "An implementation of Ed25519 by SUPERCOP ref10.",
+    "homepage": "https://github.com/epicinium/clavem",
+    "bugs": {
+        "url": "https://github.com/epicinium/clavem/issues"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Yongbin Min",
+        "email": "contact@cichol.com"
+    },
+    "main": "releases/index.js",
+    "types": "clavem.d.ts",
+    "directories": {
+        "lib": "releases",
+        "test": "tests"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/epicinium/clavem.git"
+    },
+    "scripts": {},
+    "dependencies": {},
+    "devDependencies": {},
+    "engines": {
+        "node": "^10.13.0",
+        "npm": "^6.4.1"
+    },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/",
+        "access": "public"
+    }
+}
