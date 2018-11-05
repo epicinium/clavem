@@ -8,6 +8,9 @@ fi
 
 emcc -Os sources/ed25519.c -o releases/binary.js -s EXPORTED_FUNCTIONS='["_malloc", "_free"]'
 
+# Temporal.
+ls -alF releases
+
 if [ "$NODE_ENV" = "production" ]; then
     find releases -iname "*.js" -exec sh -c "npx terser --toplevel --compress passes=2 --mangle --output {} -- {}" \;
 else
