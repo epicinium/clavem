@@ -22,8 +22,13 @@ const {
 	_sc_reduce: scReduce
 } = Module;
 
+// Variables.
+let resolve = () => {};
+
 // Constants.
-const deferred = Promise.defer();
+const deferred = new Promise((...args) => {
+	[ resolve ] = args;
+});
 
 Module.onRuntimeInitialized = () => {
 	const memory = { allocate, release };
@@ -39,7 +44,7 @@ Module.onRuntimeInitialized = () => {
 		scReduce
 	};
 
-	deferred.resolve({ memory, heap, exports });
+	resolve({ memory, heap, exports });
 };
 
-export default deferred.promise;
+export default deferred;
