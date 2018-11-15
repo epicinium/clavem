@@ -93,7 +93,7 @@ if (isVerified) {
 
 ## Trivia
 
-**clavem** means **key** in the Latin Language
+**clavem** means **key** in the Latin Language.
 
 ## License
 
