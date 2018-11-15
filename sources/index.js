@@ -1,6 +1,6 @@
 // Node.js built-in APIs.
 import { Buffer } from 'buffer';
-import { randomBytes } from 'crypto';
+import { randomBytes, timingSafeEqual } from 'crypto';
 
 // Third-party modules.
 import Promise from 'bluebird'; // eslint-disable-line no-unused-vars
@@ -103,7 +103,7 @@ export const verify = wrap(function* verify(message, signature, publicKey) {
 	geDoubleScalarMultVartime(projectivePointer, hashPointer, extendedPointer, signaturePointer);
 	projectiveToBytes(checkerPointer, projectivePointer);
 
-	return Buffer.compare(checkerPointer.heap, signature.slice(0, 32)) === 0;
+	return timingSafeEqual(checkerPointer.heap, signature.slice(0, 32));
 });
 
 /**
