@@ -12,7 +12,7 @@ before_install:
   - npm install --global npm
 
 install:
-  - npm install --no-optional
+  - npm ci --no-optional
 
 script:
   - NODE_ENV=production npm run build
