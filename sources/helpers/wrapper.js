@@ -23,7 +23,13 @@ const binary = initialized.then(({ memory }) => {
 const wrap = generator => async (...args) => {
 	await binary;
 
-	const deferred = Promise.defer();
+	let resolve;
+	let reject;
+
+	const deferred = new Promise((...args) => {
+		[ resolve, reject ] = args;
+	});
+
 	const pointers = [];
 	const iterator = generator(...args);
 	let result = iterator.next();
@@ -32,12 +38,12 @@ const wrap = generator => async (...args) => {
 		const { value } = result;
 		let yielded;
 
-		if (value instanceof Promise) {
+		if (typeof value === 'object' && typeof value.then === 'function') {
 			try {
 				yielded = await value; // eslint-disable-line no-await-in-loop
 			} catch (error) {
 				iterator.throw(error);
-				deferred.reject(error);
+				reject(error);
 
 				break;
 			}
@@ -58,9 +64,9 @@ const wrap = generator => async (...args) => {
 		release(pointer);
 	}
 
-	deferred.resolve(result.value);
+	resolve(result.value);
 
-	return deferred.promise;
+	return deferred;
 };
 
 export default wrap;
