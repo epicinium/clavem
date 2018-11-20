@@ -1,6 +1,6 @@
 {
     "name": "@epicinium/clavem",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "An implementation of Ed25519 by SUPERCOP ref10.",
     "homepage": "https://github.com/epicinium/clavem",
     "bugs": {
